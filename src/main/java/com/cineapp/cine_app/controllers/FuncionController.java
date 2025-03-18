@@ -1,7 +1,9 @@
 package com.cineapp.cine_app.controllers;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,14 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.cineapp.cine_app.clases.Funcion;
 import com.cineapp.cine_app.clases.Pelicula;
 import com.cineapp.cine_app.services.FuncionService;
+import com.cineapp.cine_app.services.MercadoPagoService;
 import com.cineapp.cine_app.services.PeliculaService;
-
-
 
 @Controller
 @RequestMapping("/funciones")
 public class FuncionController {
-
 
     @Autowired
     private FuncionService funcionService;
@@ -29,8 +29,7 @@ public class FuncionController {
     @Autowired
     private PeliculaService peliculaService;
 
-
-    @RequestMapping(value = {"/paginaInicio", "/"})
+    @RequestMapping(value = { "/paginaInicio", "/" })
     public String index(Model model) {
         return "index";
     }
@@ -44,13 +43,13 @@ public class FuncionController {
 
     @PostMapping("/guardar")
     public String guardarFuncion(@RequestParam("peliculaId") Integer peliculaId,
-                                 @RequestParam("fechaHora") String fechaHora,
-                                 @RequestParam("precio") double precio) {
+            @RequestParam("fechaHora") String fechaHora,
+            @RequestParam("precio") double precio) {
 
         Pelicula pelicula = peliculaService.obtenerPorId(peliculaId);
         LocalDateTime fechaHoraParsed = LocalDateTime.parse(fechaHora);
 
-        Funcion funcion = new Funcion(null,pelicula, fechaHoraParsed, precio);
+        Funcion funcion = new Funcion(null, pelicula, fechaHoraParsed, precio);
         funcionService.guardarFuncion(funcion);
 
         return "redirect:/funciones/listado";
@@ -61,7 +60,6 @@ public class FuncionController {
         model.addAttribute("funciones", funcionService.obtenerFunciones());
         return "listado";
     }
-
 
 
 }
