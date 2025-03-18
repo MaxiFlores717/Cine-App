@@ -1,46 +1,67 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Agregar Película</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<head th:replace="~{layout/layout :: head}">
 </head>
+
 <body class="bg-dark text-white">
-    
 
+
+
+    <!-- Navbar -->
+    <div th:replace="~{layout/layout :: header}"></div>
+    
 <div class="container mt-5">
-    <h2 class="text-center">🎬 Agregar Nueva Película</h2>
-    
-    <form th:action="@{/guardar}" method="post" enctype="multipart/form-data" class="mt-4">
-        <div class="mb-3">
-            <label class="form-label">Título</label>
-            <input type="text" name="titulo" class="form-control" required>
-        </div>
+    <div class="custom-card">
+        <h2><i class="bi bi-camera-reels-fill"></i> Agregar Nueva Película</h2>
+        
+        <form th:action="@{/peliculas/guardar}" method="post" enctype="multipart/form-data">
+            <!-- Título -->
+            <div class="mb-3">
+                <label for="titulo" class="form-label">Título</label>
+                <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Ingrese el título" required>
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Género</label>
-            <input type="text" name="genero" class="form-control" required>
-        </div>
+            <!-- Género -->
+            <div class="mb-3">
+                <label for="genero" class="form-label">Género</label>
+                <input type="text" name="genero" class="form-control" id="genero" placeholder="Ingrese el género" required>
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Descripción</label>
-            <textarea name="descripcion" class="form-control" rows="3" required></textarea>
-        </div>
+            <!-- Descripción -->
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea name="descripcion" class="form-control" id="descripcion" rows="3" placeholder="Breve descripción" required></textarea>
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Duración (min)</label>
-            <input type="number" name="duracion" class="form-control" required>
-        </div>
+            <!-- Duración -->
+            <div class="mb-3">
+                <label for="duracion" class="form-label">Duración (min)</label>
+                <input type="number" name="duracion" class="form-control" id="duracion" placeholder="Duración en minutos" required>
+            </div>
 
-        <div class="mb-3">
-            <label class="form-label">Póster de la Película</label>
-            <input type="file" name="poster" class="form-control">
-        </div>
+            <!-- Póster -->
+            <div class="mb-3">
+                <label for="poster" class="form-label">Póster de la Película</label>
+                <input type="file" name="poster" class="form-control" id="poster">
+            </div>
 
-        <button type="submit" class="btn btn-warning">Guardar Película</button>
-    </form>
+            <!-- Botón Guardar -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-custom w-100">
+                    🎥 Guardar Película
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <div th:replace="~{layout/layout :: footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

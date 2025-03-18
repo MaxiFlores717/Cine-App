@@ -85,3 +85,53 @@ nav {
 .btn-custom:hover {
     background-color: #ffcc00;
 }
+
+
+.custom-card {
+    background-color: #2C2F33;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.custom-card h2 {
+    color: #FFD700;
+    text-align: center;
+}
+
+.form-label {
+    color: #FFD700;
+    font-weight: bold;
+}
+.form-control {
+    background-color: #1F2124;
+    color: #FFFFFF !important;
+    border: 1px solid #444;
+    transition: 0.3s;
+    caret-color: #FFFFFF; /* Cursor blanco */
+}
+
+/* Asegurar que el texto sigue blanco mientras escribes */
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Opcional: hacer el placeholder un poco gris */
+}
+
+.form-control:focus {
+    background-color: #292B2F;
+    border-color: #FFD700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    color: #FFFFFF !important;
+}
+
+.btn-custom {
+    background-color: #E63946;
+    color: #FFFFFF;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: #D62839;
+}

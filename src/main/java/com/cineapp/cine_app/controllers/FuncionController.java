@@ -13,8 +13,6 @@ import com.cineapp.cine_app.services.PeliculaService;
 @Controller
 public class FuncionController {
 
-    @Autowired
-    private PeliculaService peliculaService;
 
 
     @RequestMapping(value = {"/paginaInicio", "/"})
@@ -22,10 +20,5 @@ public class FuncionController {
         return "index";
     }
 
-    @GetMapping("/cartelera")
-    public String mostrarCartelera(Model model) {
-        model.addAttribute("peliculas", peliculaService.obtenerCartelera());
-        return "cartelera";
-    }
 
 }
